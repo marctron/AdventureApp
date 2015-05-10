@@ -3,22 +3,16 @@ package com.example.marc.fragmenttests2;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 
 public class GameEnvironment extends ActionBarActivity implements ChoicesFragment.ChoicesListener, AdapterView.OnItemClickListener {
 
     private int adv; // Added by Gerald
     private int story; // Added by Gerald
-    private DrawerLayout drawerLayout;
-    private ListView listView;
-    private ThreadLocal<String[]> navOptions = new ThreadLocal<>();
     private LogFragment log;
     private ChoicesFragment choicesfrag;
     private PictureFragment pic;
@@ -34,11 +28,6 @@ public class GameEnvironment extends ActionBarActivity implements ChoicesFragmen
         } else {
             super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        navOptions.set(getResources().getStringArray(R.array.entries));
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        listView = (ListView) findViewById(R.id.drawer_list);
-        listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, navOptions.get()));
-        listView.setOnItemClickListener(this);
         getSupportActionBar().setTitle("Adventures");
     }
 
