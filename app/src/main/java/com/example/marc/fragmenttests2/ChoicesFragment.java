@@ -27,7 +27,7 @@ public class ChoicesFragment extends Fragment {
     ChoicesListener activityCommander;
 
     public interface ChoicesListener {
-        public void choice(int decision);
+        void choice(int decision);
     }
 
     @Override
@@ -50,11 +50,7 @@ public class ChoicesFragment extends Fragment {
         for (int i = 0; i < btns.length; i++) {
             btns[i] = (Button) view.findViewById(id);
             btns[i].setOnClickListener(
-                    new View.OnClickListener() {
-                        public void onClick(View v) {
-                            buttonClicked(v);
-                        }
-                    }
+                    ChoicesFragment.this::buttonClicked
             );
             id++;
         }
@@ -78,7 +74,7 @@ public class ChoicesFragment extends Fragment {
                     setButtonText();
                     activityCommander.choice(i - 4);
                 }
-                else if (btns[i].getText().toString().substring(0).equals("Return to Story Menu"))
+                else if (btns[i].getText().equals("Return to Story Menu"))
                 {
                     adv = -1;
                     setButtonText();
@@ -148,10 +144,10 @@ public class ChoicesFragment extends Fragment {
                 i2 = this.getResources().openRawResource(R.raw.script_t);
                 break;
             case 2:
-                ;//For another adventure if we add it
+                //For another adventure if we add it
                 break;
             case 3:
-                ;//For another adventure if we add it
+                //For another adventure if we add it
                 break;
         }
 
