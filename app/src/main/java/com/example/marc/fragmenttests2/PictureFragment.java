@@ -34,7 +34,7 @@ public class PictureFragment extends Fragment {
     public void setPicture(int adventure, int story)//there should be some parameters based on how the story progression works
     {
         if (story == -1)
-            picture.setImageResource(R.drawable.robocop);
+            picture.setImageResource(R.drawable.storymenu);
         else if (adventure ==0){
             //Gerald's stories' pictures
         }
