@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -66,12 +67,13 @@ public class GameEnvironment extends ActionBarActivity implements ChoicesFragmen
         //                       what's currently being used for Strings
         log = (LogFragment)getSupportFragmentManager().findFragmentById(R.id.fragment2);
         pic = (PictureFragment)getSupportFragmentManager().findFragmentById(R.id.fragment);
-        pic.setPicture();
         if (decision == 20)
         {
             // This will clear out log fragment for adventure choice
             adv = -1;
             log.clearText();
+            story=-1;
+            pic.setPicture(adv, story);
         }
         else if (decision < 0)
         {
@@ -80,6 +82,7 @@ public class GameEnvironment extends ActionBarActivity implements ChoicesFragmen
             story = 0;
             decision += 4;
             log.addText(adv, story , decision);
+            pic.setPicture(adv, story);
         }
         else
         {
@@ -90,11 +93,12 @@ public class GameEnvironment extends ActionBarActivity implements ChoicesFragmen
             //    "adv" and "story" can also be used as a means of knowing which music to play.
             advanceStory(adv, decision);
             log.addText( story , decision);
+            pic.setPicture(adv, story);
         }
     }
 
 
-    public void advanceStory( int adventure , int choice ) {
+    public void advanceStory(int adventure , int choice ) {
         // This is a new method added specifically to adjust private variable "story"
         if (adventure == 0) // Adventure #1's progression (Gerald's Script)
         {

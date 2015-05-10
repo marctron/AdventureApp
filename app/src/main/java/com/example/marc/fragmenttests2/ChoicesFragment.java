@@ -50,7 +50,11 @@ public class ChoicesFragment extends Fragment {
         for (int i = 0; i < btns.length; i++) {
             btns[i] = (Button) view.findViewById(id);
             btns[i].setOnClickListener(
-                    ChoicesFragment.this::buttonClicked
+                    new View.OnClickListener() {
+                        public void onClick(View v) {
+                            buttonClicked(v);
+                        }
+                    }
             );
             id++;
         }
