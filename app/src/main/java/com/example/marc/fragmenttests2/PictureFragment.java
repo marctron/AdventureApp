@@ -136,10 +136,12 @@ public class PictureFragment extends Fragment {
                 }
             }
         }
-        else if (adventure ==2){
+        else if (adventure ==2)
+        {
 
         }
-        else if (adventure==3){
+        else if (adventure==3)
+        {
 
         }
     }
